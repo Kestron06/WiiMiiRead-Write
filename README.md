@@ -7,3 +7,5 @@ For other things such as beard type where it isn't paginated and it gives you a 
 
 
 Dependencies: fs. That's it - `npm i fs` from a command line in the same folder as the program and you're good to go.
+
+Also while I believe it is fully functioning, I obviously cannot test every single Mii combination and also have not worked with Binary before. If you find anything wrong, please let me know! You can reach me at kestron@kestron.software, or making an issue, or joining https://discord.gg/k3yVkrrvez
