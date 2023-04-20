@@ -240,7 +240,7 @@ function readMiiBinaryFile(path){
     thisMii.info.birthMonth=parseInt(temp.slice(2,6),2);
     thisMii.info.birthday=parseInt(temp.slice(6,8)+temp2.slice(0,3),2);
     thisMii.info.favColor=cols[parseInt(temp2.slice(3,7),2)];//0-11, refer to cols array
-    thisMii.info.favorited=temp[7]==="0"?false:true;
+    thisMii.info.favorited=temp2[7]==="0"?false:true;
     thisMii.info.height=parseInt(getBinaryFromAddress(0x16),2);//0-127
     thisMii.info.weight=parseInt(getBinaryFromAddress(0x17),2);//0-127
     thisMii.info.downloadedFromCheckMiiOut=getBinaryFromAddress(0x21)[7]==="0"?false:true;
