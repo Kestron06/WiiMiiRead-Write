@@ -223,7 +223,7 @@ function readMiiBinaryFile(path){
     thisMii.face.shape=parseInt(temp.slice(0,3),2);//0-7
     thisMii.face.col=skinColors[parseInt(temp.slice(3,6),2)];//0-5
     temp=getBinaryFromAddress(0x21);
-    thisMii.face.feature=faceFeatures[parseInt(temp.slice(0,4),2)];//0-11
+    thisMii.face.feature=faceFeatures[parseInt(getBinaryFromAddress(0x20).slice(6,8)+temp.slice(0,2),2)];//0-11
     thisMii.info.mingle=temp[5]==="1"?false:true;//0 for Mingle, 1 for Don't Mingle
     temp=getBinaryFromAddress(0x2C);
     thisMii.nose.type=parseInt(temp.slice(0,4),2);
@@ -289,4 +289,4 @@ function readMiiBinaryFile(path){
     thisMii.facialHair.mustacheYPos=parseInt(temp2.slice(3,8),2);//0-16, default 2
     return thisMii;
 }
-console.log(readMiiBinaryFile("./mii0.mii"));
+console.log(readMiiBinaryFile("./mii1.mii"));
