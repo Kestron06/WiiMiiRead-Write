@@ -4,3 +4,6 @@ This is still being worked on and as such isn't setup in a super useful way, but
 The outputted JSON file should hopefully be very human-readable, it is for me but I'm also a programmer with a different mindset. The syntax for paginated ones (such as Mii.mouth.type) is PageNumber-X-Y, so 123 would be first page, second from the right, third from the top.
 
 For other things such as beard type where it isn't paginated and it gives you a number, it is in programmer array notation - meaning you start counting at 0. So the nose in the top right corner, you count 0, 1, 2 - the two dot nostrils would be a 2
+
+
+Dependencies: fs. That's it - `npm i fs` from a command line in the same folder as the program and you're good to go.
