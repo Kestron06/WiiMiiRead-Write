@@ -228,13 +228,13 @@ function readMiiBinaryFile(path){
     temp=getBinaryFromAddress(0x2C);
     thisMii.nose.type=parseInt(temp.slice(0,4),2);
     thisMii.nose.size=parseInt(temp.slice(4,8),2);
-    thisMii.nose.vertPos=parseInt(getBinaryFromAddress(0x2D).slice(0,5),2);//From bottom to top, 0-18, default 9
+    thisMii.nose.vertPos=parseInt(getBinaryFromAddress(0x2D).slice(0,5),2);//From top to bottom, 0-18, default 9
     temp=getBinaryFromAddress(0x2E);
     thisMii.mouth.type=mouthTable[""+parseInt(temp.slice(0,5),2)];//0-23, Needs lookup table
     thisMii.mouth.col=mouthColors[parseInt(temp.slice(5,7),2)];//0-2, refer to mouthColors array
     temp2=getBinaryFromAddress(0x2F);
     thisMii.mouth.size=parseInt(temp[7]+temp2.slice(0,3),2);//0-8, default 4
-    thisMii.mouth.yPos=parseInt(temp2.slice(3,8),2);//0-18, default 9
+    thisMii.mouth.yPos=parseInt(temp2.slice(3,8),2);//0-18, default 9, from top to bottom
     temp=getBinaryFromAddress(0x00);
     var temp2=getBinaryFromAddress(0x01);
     thisMii.info.birthMonth=parseInt(temp.slice(2,6),2);
@@ -249,7 +249,7 @@ function readMiiBinaryFile(path){
     thisMii.mole.on=temp[0]==="0"?false:true;//0 for Off, 1 for On
     thisMii.mole.size=parseInt(temp.slice(1,5),2);//0-8, default 4
     thisMii.mole.xPos=parseInt(temp2.slice(2,7),2);//0-16, Default 2
-    thisMii.mole.yPos=parseInt(temp.slice(5,8)+temp2.slice(0,2),2);
+    thisMii.mole.yPos=parseInt(temp.slice(5,8)+temp2.slice(0,2),2);//Top to bottom
     temp=getBinaryFromAddress(0x22);
     temp2=getBinaryFromAddress(0x23);
     thisMii.hair.type=hairTable[""+parseInt(temp.slice(0,7),2)];//0-71, Needs lookup table
@@ -289,4 +289,4 @@ function readMiiBinaryFile(path){
     thisMii.facialHair.mustacheYPos=parseInt(temp2.slice(3,8),2);//0-16, default 2
     return thisMii;
 }
-console.log(readMiiBinaryFile("./Maddie.mii"));
+console.log(readMiiBinaryFile("./mii0.mii"));
