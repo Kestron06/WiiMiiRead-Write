@@ -287,6 +287,7 @@ function readMiiBinaryFile(path){
     thisMii.facialHair.col=hairCols[parseInt(temp.slice(4,7),2)];//0-7
     thisMii.facialHair.mustacheSize=parseInt(temp[7]+temp2.slice(0,3),2);//0-30, default 20
     thisMii.facialHair.mustacheYPos=parseInt(temp2.slice(3,8),2);//0-16, default 2
+    console.log(getBinaryFromAddress(0x20)+" "+getBinaryFromAddress(0x21));
     return thisMii;
 }
-console.log(readMiiBinaryFile("./mii1.mii"));
+console.log(readMiiBinaryFile("./mii0.mii"));
