@@ -11,3 +11,7 @@ Writing works on whatever path you set it to go to, and write ./MII NAME.mii whi
 Dependencies: fs. That's it - `npm i fs` from a command line in the same folder as the program and you're good to go.
 
 Also while I believe it is fully functioning, I obviously cannot test every single Mii combination and also have not worked with Binary before. If you find anything wrong, please let me know! You can reach me at kestron@kestron.software, or making an issue, or joining https://discord.gg/k3yVkrrvez
+
+#MakeSpecial.js
+IS NOT TESTED. IT WILL MOST LIKELY NOT WORK.
+I am pinging it up to the repo because of some issues I'm having with my laptop. It MIGHT work, but it most likely won't. I haven't tested.
