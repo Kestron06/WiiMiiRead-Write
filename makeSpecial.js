@@ -1,5 +1,5 @@
 const fs=require("fs");
-var binary=fs.readFileSync("./Maddie.mii");
+var binary=fs.readFileSync("./mii0.mii");
 function getBinaryFromAddress(addr){//EG: 0x20
     let byte = binary.readUInt8(addr);
     let binaryString = '';
