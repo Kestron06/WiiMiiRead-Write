@@ -26,4 +26,4 @@ for(var i=0;i<toWrite.length;i++){
     buffers.push(parseInt(toWrite[i],2));
 }
 const buffer = Buffer.from(buffers);
-fs.writeFileSync("./Maddie-Special.mii", buffer);
+fs.writeFileSync("./Output-Special.mii", buffer);
