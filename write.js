@@ -1,3 +1,4 @@
+//Make it use the provided System and Mii IDs (unless converting to special, in which case use a custom first Mii ID byte and only use the other 3 Mii ID bytes)
 const fs=require("fs");
 var cols=["Red","Orange","Yellow","Lime","Green","Blue","Light Blue","Pink","Purple","Brown","White","Black"];
 var faceFeatures=["None","Blush","Makeup and Blush","Freckles","Bags","Wrinkles on Cheeks","Wrinkles near Eyes","Chin Wrinkle","Makeup","Stubble","Wrinkles near Mouth","Wrinkles"];
@@ -208,16 +209,30 @@ function writeMiiBinaryFileFromJSON(mii){
     }
     miiBin+=mii.info.height.toString(2).padStart(8,"0");
     miiBin+=mii.info.weight.toString(2).padStart(8,"0");
-    if(mii.systemID&&mii.miiID &&false){
-
+    let miiId="";
+    switch(mii.info.type){
+        case "Special":
+            miiId="01000110";
+        break;
+        case "Foreign":
+            miiId="11000110";
+        break;
+        default:
+            miiId="10101001";
+        break;
     }
-    else{
-        miiBin+="11111111".repeat(8);
+    for(var i=0;i<3;i++){
+        miiId+=Math.floor(Math.random()*255).toString(2).padStart(8,"0");
     }
+    miiBin+=miiId;
+    miiBin+="11111111".repeat(4);//System ID
     miiBin+=mii.face.shape.toString(2).padStart(3,"0");
     miiBin+=skinColors.indexOf(mii.face.col).toString(2).padStart(3,"0");
     miiBin+=faceFeatures.indexOf(mii.face.feature).toString(2).padStart(4,"0");
     miiBin+="000";
+    if(mii.info.mingle&&mii.info.type==="Special"){
+        console.error("A Special Mii cannot have Mingle on and still render on the Wii. Turned Mingle off in the output file.");
+    }
     miiBin+=mii.info.mingle?"0":"1";
     miiBin+="0";
     miiBin+=mii.info.downloadedFromCheckMiiOut?"1":"0";
@@ -282,7 +297,7 @@ function writeMiiBinaryFileFromJSON(mii){
         buffers.push(parseInt(toWrite[i],2));
     }
     const buffer = Buffer.from(buffers);
-    fs.writeFileSync('./'+mii.name+".mii", buffer);
+    fs.writeFileSync('./'+mii.name+"Output.mii", buffer);
 }
-var Mii=require("./mii.js").mii;//Assuming you have exports.mii=MII JSON OUTPUT
+var Mii=require("./Maddie.js").mii;//Assuming you have exports.mii=MII JSON OUTPUT
 writeMiiBinaryFileFromJSON(Mii);
