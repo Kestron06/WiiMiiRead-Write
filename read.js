@@ -1,3 +1,5 @@
+//0x18-0x1B: Mii ID
+//0x1C-0x1F: System ID. First byte Checksum8 of first 3 bytes of Mac addr. Other bytes are the remaining Mac addr bytes.
 var fs = require('fs');
 var miis=[];
 var cols=["Red","Orange","Yellow","Lime","Green","Blue","Light Blue","Pink","Purple","Brown","White","Black"];
@@ -193,7 +195,6 @@ function readMiiBinaryFile(path){
         return binaryString;
     }
     var thisMii={
-        filename:path,
         info:{},
         face:{},
         nose:{},
@@ -219,6 +220,8 @@ function readMiiBinaryFile(path){
     thisMii.info.creatorName=thisMii.creatorName;
     thisMii.info.name=thisMii.name;//Up to ten characters
     thisMii.info.gender=getBinaryFromAddress(0x00)[1]==="1"?"Female":"Male";//0 for Male, 1 for Female
+		thisMii.info.miiId=parseInt(getBinaryFromAddress(0x18),2).toString(16)+parseInt(getBinaryFromAddress(0x19),2).toString(16)+parseInt(getBinaryFromAddress(0x1A),2).toString(16)+parseInt(getBinaryFromAddress(0x1B),2).toString(16);
+	thisMii.info.systemId=parseInt(getBinaryFromAddress(0x1C),2).toString(16)+parseInt(getBinaryFromAddress(0x1D),2).toString(16)+parseInt(getBinaryFromAddress(0x1E),2).toString(16)+parseInt(getBinaryFromAddress(0x1F),2).toString(16);
     var temp=getBinaryFromAddress(0x20);
     thisMii.face.shape=parseInt(temp.slice(0,3),2);//0-7
     thisMii.face.col=skinColors[parseInt(temp.slice(3,6),2)];//0-5
@@ -226,7 +229,7 @@ function readMiiBinaryFile(path){
     thisMii.face.feature=faceFeatures[parseInt(getBinaryFromAddress(0x20).slice(6,8)+temp.slice(0,2),2)];//0-11
     thisMii.info.mingle=temp[5]==="1"?false:true;//0 for Mingle, 1 for Don't Mingle
     temp=getBinaryFromAddress(0x2C);
-    thisMii.nose.type=parseInt(temp.slice(0,4),2);
+    thisMii.nose.type=parseInt(temp.slice(0,4),2);//Needs lookup table
     thisMii.nose.size=parseInt(temp.slice(4,8),2);
     thisMii.nose.vertPos=parseInt(getBinaryFromAddress(0x2D).slice(0,5),2);//From top to bottom, 0-18, default 9
     temp=getBinaryFromAddress(0x2E);
@@ -290,4 +293,4 @@ function readMiiBinaryFile(path){
     console.log(getBinaryFromAddress(0x20)+" "+getBinaryFromAddress(0x21));
     return thisMii;
 }
-console.log(readMiiBinaryFile("./mii0.mii"));
+console.log(readMiiBinaryFile("./Maddie.mii"));
