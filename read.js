@@ -220,8 +220,8 @@ function readMiiBinaryFile(path){
     thisMii.info.creatorName=thisMii.creatorName;
     thisMii.info.name=thisMii.name;//Up to ten characters
     thisMii.info.gender=getBinaryFromAddress(0x00)[1]==="1"?"Female":"Male";//0 for Male, 1 for Female
-		thisMii.info.miiId=parseInt(getBinaryFromAddress(0x18),2).toString(16)+parseInt(getBinaryFromAddress(0x19),2).toString(16)+parseInt(getBinaryFromAddress(0x1A),2).toString(16)+parseInt(getBinaryFromAddress(0x1B),2).toString(16);
-	thisMii.info.systemId=parseInt(getBinaryFromAddress(0x1C),2).toString(16)+parseInt(getBinaryFromAddress(0x1D),2).toString(16)+parseInt(getBinaryFromAddress(0x1E),2).toString(16)+parseInt(getBinaryFromAddress(0x1F),2).toString(16);
+    thisMii.info.miiId=parseInt(getBinaryFromAddress(0x18),2).toString(16)+parseInt(getBinaryFromAddress(0x19),2).toString(16)+parseInt(getBinaryFromAddress(0x1A),2).toString(16)+parseInt(getBinaryFromAddress(0x1B),2).toString(16);
+    thisMii.info.systemId=parseInt(getBinaryFromAddress(0x1C),2).toString(16)+parseInt(getBinaryFromAddress(0x1D),2).toString(16)+parseInt(getBinaryFromAddress(0x1E),2).toString(16)+parseInt(getBinaryFromAddress(0x1F),2).toString(16);
     var temp=getBinaryFromAddress(0x20);
     thisMii.face.shape=parseInt(temp.slice(0,3),2);//0-7
     thisMii.face.col=skinColors[parseInt(temp.slice(3,6),2)];//0-5
