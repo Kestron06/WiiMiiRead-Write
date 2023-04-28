@@ -213,7 +213,9 @@ function readMii(){
   temp=getBinaryFromAddress(0x34);
   miiJson.eyes.type=lookupTable("eyes",parseInt(temp.slice(2,8),2),true);
   temp2=getBinaryFromAddress(0x33);
-  miiJson.eyes.col=eyeCols[parseInt(temp2[7]+temp.slice(0,2),2)];
+  miiJson.hair.col=hairCols[parseInt(temp2.slice(5,8),2)];
+  miiJson.hair.flipped=temp2[4]==="0"?false:true;
+  miiJson.eyes.col=eyeCols[parseInt(getBinaryFromAddress(0x35)[7]+temp.slice(0,2),2)];
   temp=getBinaryFromAddress(0x35);
   miiJson.eyes.size=parseInt(temp.slice(3,7),2);
   miiJson.eyes.squash=parseInt(temp.slice(0,3),2);
