@@ -1,7 +1,6 @@
 const fs = require('fs');
 const { createCanvas, loadImage } = require('canvas');
 const jsQR = require('jsqr');
-const crypto=require("crypto");
 const asmCrypto=require("./asmCrypto.js");
 const qrCodeJpgFilePath = 'test.png';
 var NONCE_OFFSET = 0xC;
@@ -199,8 +198,8 @@ function readMii(){
   }
   miiJson.creatorName=cname.replaceAll("\x00","");
   miiJson.info.creatorName=miiJson.creatorName;
-  miiJson.info.weight=parseInt(getBinaryFromAddress(0x2E),2);
-  miiJson.info.height=parseInt(getBinaryFromAddress(0x2F),2);
+  miiJson.info.height=parseInt(getBinaryFromAddress(0x2E),2);
+  miiJson.info.weight=parseInt(getBinaryFromAddress(0x2F),2);
   miiJson.info.gender=temp[7]==="1"?"Female":"Male";
   temp=getBinaryFromAddress(0x30);
   miiJson.perms.sharing=temp[7]==="1"?false:true;
@@ -279,7 +278,7 @@ function readMii(){
   10000000 - 128
   */
 }
-fs.readFile("./maddie.jpg", (err, data) => {
+fs.readFile("./mii0.jpg", (err, data) => {
   if (err) {
     console.error(err);
     return;
