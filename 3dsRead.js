@@ -1,6 +1,7 @@
 const fs = require('fs');
 const { createCanvas, loadImage } = require('canvas');
 const jsQR = require('jsqr');
+const crypto=require("crypto");
 const asmCrypto=require("./asmCrypto.js");
 const qrCodeJpgFilePath = 'test.png';
 var NONCE_OFFSET = 0xC;
@@ -186,7 +187,7 @@ function readMii(){
   var temp=getBinaryFromAddress(0x18);
   var temp2=getBinaryFromAddress(0x19);
   miiJson.info.birthday=parseInt(temp2.slice(6,8)+temp.slice(0,3),2);
-  miiJson.info.birthMonth=parseInt(temp.slice(4,7),2);
+  miiJson.info.birthMonth=parseInt(temp.slice(3,7),2);
   var name="";
   for(var i=0x1A;i<0x2E;i++){
       name+=binary.slice(i,i+1);
