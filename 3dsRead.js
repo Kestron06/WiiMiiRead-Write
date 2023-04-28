@@ -1,9 +1,7 @@
 const fs = require('fs');
 const { createCanvas, loadImage } = require('canvas');
 const jsQR = require('jsqr');
-const crypto=require("crypto");
 const asmCrypto=require("./asmCrypto.js");
-const qrCodeJpgFilePath = 'test.png';
 var NONCE_OFFSET = 0xC;
 var NONCE_LENGTH = 8;
 var TAG_LENGTH = 0x10;
