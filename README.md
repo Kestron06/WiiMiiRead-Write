@@ -17,5 +17,5 @@ I am pinging it up to the repo because of some issues I'm having with my laptop.
 #3DSRead.js
 Is fully working however it's a lot more complex with a bunch more dependencies - I'm still tinkering with it as well and don't have a ton of test cases done.
 
-#Contact
+# Contact
 While I believe it is fully functioning, I obviously cannot test every single Mii combination and also have not worked with Binary before. If you find anything wrong, please let me know! You can reach me at kestron@kestron.software, or making an issue, or joining https://discord.gg/k3yVkrrvez
