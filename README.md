@@ -14,8 +14,8 @@ Dependencies: fs. That's it - `npm i fs` from a command line in the same folder 
 IS NOT TESTED. IT WILL MOST LIKELY NOT WORK.
 I am pinging it up to the repo because of some issues I'm having with my laptop. It MIGHT work, but it most likely won't. I haven't tested.
 
-#3DSRead.js
-Is fully working however it's a lot more complex with a bunch more dependencies - I'm still tinkering with it as well and don't have a ton of test cases done.
+# 3DSRead.js
+Is fully working however it's a lot more complex with a bunch more dependencies - I'm still tinkering with it as well and don't have a ton of test cases done. When I do, I'll rename the repo to encompass the 3DS as well.
 
 # Contact
 While I believe it is fully functioning, I obviously cannot test every single Mii combination and also have not worked with Binary before. If you find anything wrong, please let me know! You can reach me at kestron@kestron.software, or making an issue, or joining https://discord.gg/k3yVkrrvez
