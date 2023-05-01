@@ -1,3 +1,5 @@
+# Use https://github.com/SMOMusic/MiiJS instead
+
 # WiiMiiRead/Write
 This is still being worked on and as such isn't setup in a super useful way, but what this allows you to do is put a Wii's Mii file on your device (Put the Mii file on the Wiimote, and then you can connect the Wiimote using Wiimotehook (what I used) or connect it through Dolphin Wii Emulator and then I used WDML_MiiTransfer to get it onto my device. You can also do the same to write a Mii to your Wii). From there, you can use Node.js with index.js to read the file into a human-readable JSON object. Currently I do not have arguments at the command line level set up so you will have to edit the index.js file to say which file you would like to read, and how you want it outputted. I just do `console.log(readMiiBinaryFile('./PATHTOMIIFILE.mii'));`. I will be working on this more until it is a usable application with more features, but considering the time and research it took to get this far I decided I'd document it.
 
